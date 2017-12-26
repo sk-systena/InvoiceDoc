@@ -5,6 +5,7 @@ cd `dirname $0`
 files=()
 files+=('../src/regist.md')
 files+=('../src/remove.md')
+files+=('../src/update.md')
 files+=('../src/search.md')
 files+=('../src/list.md')
 

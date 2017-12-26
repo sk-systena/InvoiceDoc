@@ -1,26 +1,17 @@
-## 請求書情報の取得 [/invoice/search]
- 
-### 請求書情報取得 [POST]
- 
-#### 処理概要
+# 請求書情報の取得 [GET /invoices/:{invoiceNo}] 
+## 処理概要
  
 * 検索条件に該当する請求書情報を返す。
 * 請求書番号で該当請求書情報を検索する。
 * 返却は該当するすべての請求書情報をjson形式にて返却。
 
-+ Request (application/json)
-
-    + Headers
-
-            Accept : application/json
-
-    + Attributes
-        + invoiceNo : 11440002 (number, required) - 請求書番号
++ Parameters
+ 
+    + invoiceNo : 11440002 (number, required) - 請求書番号
 
 + Response 200 (application/json)
  
     + Attributes
-        + status : 200 (number, required) - Status(200:成功, 500:Serverエラー, 999:システムエラー)
         + invoiceNo : 11440002 (number, required) - 請求書番号
         + clientNo : 300 (number, required) - 顧客管理番号
         + clientName : Systena (string, required) - 顧客名称

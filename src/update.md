@@ -1,15 +1,11 @@
-FORMAT: 1A
+## 請求書の更新 [/invoices/{invoiceNo}]
  
-# Group InvoiceAPI
- 
-## 請求書の登録 [/invoices/1]
- 
-### 請求書登録 [POST]
+### 請求書更新 [PUT]
  
 #### 処理概要
  
-* 請求書を新しく登録する。
-* 登録に成功した場合、ステータス200と請求書番号を返す。
+* 登録済みの請求書を修正・更新する。
+* 更新に成功した場合、更新結果を返却する。
  
 + Request (application/json)
  
@@ -18,6 +14,7 @@ FORMAT: 1A
             Accept : application/json
  
     + Attributes
+        + invoiceNo : 11440002 (number, required) - 請求書番号
         + clientName : Systena (string, required) - 顧客名称
         + invoiceStatus : 20 (string, required) - 請求状態(10: 新規作成, 20: 送付済, 30: 入金確認済, 90: 廃棄)
         + invoiceTitle : 例：Systenaガーデン利用料 (string, required) -　請求書タイトル
@@ -30,18 +27,19 @@ FORMAT: 1A
 + Response 200 (application/json)
  
     + Attributes
-        + status : 200 (number, required) - Status(200:成功, 500:Serverエラー, 999:システムエラー)
         + invoiceNo : 11440002 (number, required) - 請求書番号
 
 
 + Response 400 (application/json)
 
     + Attributes
-        + message : 200 (number, required) - 
-        + error : 11440002 (number, required) - 請求書番号
+        + message : DB update failed. Please retry later. (string, required) - Errorメッセージ
+        + error (object, required) - エラー詳細
+            + message : "" (string) - Stack Trace 等
 
 + Response 500 (application/json)
 
     + Attributes
-        + message : 200 (number, required) - 
-        + error : 11440002 (number, required) - 請求書番号
+        + message : Occar Server system errors. Please contact the system administrator. (string, required) - Errorメッセージ
+        + error (object, required) - エラー詳細
+            + message : "" (string) - Stack Trace 等
