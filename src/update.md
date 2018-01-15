@@ -1,7 +1,4 @@
-## 請求書の更新 [/invoices/{invoiceNo}]
- 
-### 請求書更新 [PUT]
- 
+# 請求書の更新 [PUT /invoices/{invoiceNo}]
 #### 処理概要
  
 * 登録済みの請求書を修正・更新する。

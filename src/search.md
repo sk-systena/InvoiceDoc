@@ -1,9 +1,9 @@
-# 請求書情報の取得 [GET /invoices/:{invoiceNo}] 
-## 処理概要
+# 検索処理を実施 [GET /invoices/:{invoiceNo}]
+#### 処理概要
  
 * 検索条件に該当する請求書情報を返す。
 * 請求書番号で該当請求書情報を検索する。
-* 返却は該当するすべての請求書情報をjson形式にて返却。
+* 返却は原則として一意の請求書情報をjson形式にて返却。
 
 + Parameters
  
@@ -22,3 +22,18 @@
         + invoiceSt : 2017/01/01 (string, required) - 請求開始日 [YYYY/MM/DD]
         + invoiceEd : 2017/02/01 (string, required) - 請求終了日 [YYYY/MM/DD]
         + invoiceNote : 備考欄 (string, optional) - 備考
+
++ Response 400 (application/json)
+
+    + Attributes
+        + message : DB requests failed. Please retry later. (string, required) - Errorメッセージ
+        + error (object, required) - エラー詳細
+            + message : "" (string) - Stack Trace 等
+
++ Response 500 (application/json)
+
+    + Attributes
+        + message : Occar Server system errors. Please contact the system administrator. (string, required) - Errorメッセージ
+        + error (object, required) - エラー詳細
+            + message : "" (string) - Stack Trace 等
+

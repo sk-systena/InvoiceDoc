@@ -1,5 +1,5 @@
-# 請求書の削除 [DELETE /invoices/:{invoiceNo}]
-## 処理概要
+# 削除処理を実施 [DELETE /invoices/]
+#### 処理概要
  
 * 請求書データの再削除フラグを立てる。
 * 更新完了した場合、ステータス200を返却
@@ -21,10 +21,14 @@
 + Response 400 (application/json)
 
     + Attributes
-        + status : 200 (number, required) - Status(200:成功, 500:Serverエラー, 999:システムエラー)
-
+        + message : DB requests failed. Please retry later. (string, required) - Errorメッセージ
+        + error (object, required) - エラー詳細
+            + message : "" (string) - Stack Trace 等
 
 + Response 500 (application/json)
 
     + Attributes
-        + status : 200 (number, required) - Status(200:成功, 500:Serverエラー, 999:システムエラー)
+        + message : Occar Server system errors. Please contact the system administrator. (string, required) - Errorメッセージ
+        + error (object, required) - エラー詳細
+            + message : "" (string) - Stack Trace 等
+
