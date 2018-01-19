@@ -1,4 +1,5 @@
-# 請求書リスト情報の取得 [GET /invoices{?invoiceNo,clientNo,clientName,invoiceStatus,invoiceSt,invoiceEd}]
+# 複数請求書 対象処理 [/invoices{?invoiceNo,clientNo,clientName,invoiceStatus,invoiceSt,invoiceEd}]
+# 請求書リスト情報の取得 [GET]
 #### 処理概要
  
 * 検索条件に該当する請求書番号リスト情報を返す。
@@ -33,12 +34,14 @@
 
     + Attributes
         + message : DB requests failed. Please retry later. (string, required) - Errorメッセージ
-        + error (object, required) - エラー詳細
-            + message : "" (string) - Stack Trace 等
+        - errors (array, required)
+            + (object) - エラー詳細
+                + message : "" (string) - Stack Trace 等
 
 + Response 500 (application/json)
 
     + Attributes
         + message : Occar Server system errors. Please contact the system administrator. (string, required) - Errorメッセージ
-        + error (object, required) - エラー詳細
-            + message : "" (string) - Stack Trace 等
+        - errors (array, required)
+            + (object) - エラー詳細
+                + message : "" (string) - Stack Trace 等

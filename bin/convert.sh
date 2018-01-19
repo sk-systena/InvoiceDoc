@@ -4,10 +4,10 @@ cd `dirname $0`
  
 files=()
 files+=('../src/regist.md')
-files+=('../src/remove.md')
-files+=('../src/update.md')
 files+=('../src/search.md')
+files+=('../src/remove.md')
 files+=('../src/list.md')
+#files+=('../src/update.md')
 
 echo 'FORMAT: 1A' > ../api.md || exit $?
 cat ${files[@]} | sed -e '/^FORMAT: 1A/d' >> ../api.md || exit $?
